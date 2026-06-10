@@ -21,7 +21,7 @@ jobs:
               print('workflow.json nao encontrado')
               sys.exit(1)
           try:
-              data = json.loads(path.read_text())
+              data = json.loads(path.read_text(encoding='utf-8-sig'))
               nodes = data.get('nodes', [])
               print(f'workflow.json valido — {len(nodes)} nodes encontrados')
           except json.JSONDecodeError as e:
