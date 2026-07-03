@@ -107,4 +107,59 @@ Clique em **Activate** (canto superior direito) para iniciar o monitoramento.
 
 ---
 
-[← Voltar ao índice](../README.md)
+<details>
+<summary>🇺🇸 English</summary>
+
+# 🎙️ Smart Recording Customer Support
+
+> Customer support agent via **email** with context memory — automatically replies to Gmail messages using GPT and keeps the conversation history.
+
+## 📌 What this workflow does
+
+1. **Monitors** the Gmail inbox every minute
+2. **Reads** the incoming email and loads the conversation history (per-session memory)
+3. **Processes** it with an AI Agent (GPT-4o) following the support system instructions
+4. **Replies** automatically to the sender via Gmail itself
+
+### Use case
+Ideal for support teams that need an automatic, intelligent first response — reduces wait time and guarantees 24/7 coverage.
+
+## 🏗️ Architecture
+
+```
+Gmail Trigger (1min polling)
+        │
+        ▼
+   [New email?] ──── No ──── Ignore
+        │ Yes
+        ▼
+   AI Agent (GPT-4o)
+   ├── Memory Buffer (conversation history)
+   └── Support instructions
+        │
+        ▼
+   Reply to Message (Gmail)
+```
+
+## 🔧 Integrations
+
+| Service | Use |
+|---|---|
+| **Gmail** | Trigger (reading) + sending the reply |
+| **OpenAI GPT-4o** | Message processing and response generation |
+| **Memory Buffer** | Conversation context per email thread |
+
+## 📊 Workflow metrics
+
+| Metric | Value |
+|---|---|
+| Total nodes | 6 |
+| Polling interval | 1 minute |
+| LLM model | GPT-4o (configurable) |
+| Memory window | Latest messages in the thread |
+
+</details>
+
+---
+
+[← Back to profile](https://github.com/Dimitrearaujo)
